@@ -1,6 +1,6 @@
-.data #variáveis
+.data #variÃ¡veis
 hello: .asciiz "Bom dia"
-.text #instruções
+.text #instruÃ§Ãµes
 
 li $v0, 4 #load immediate
 la $a0, hello # load address
