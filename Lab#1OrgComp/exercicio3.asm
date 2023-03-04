@@ -13,14 +13,20 @@ syscall
 move $t0, $v0 #transfere o valor lido para $t0
 
 # escrever aqui
-beq $t0, 3, terceira # "se o valor lido for igual a 3" vá para...
+ble $t0, 1, primeira # "se o valor lido for menor ou igual a 1 vá para...
+ble $t0, 2, segunda # "se o valor lido for menor ou igual a 2" vá para...
+ble $t0, 3, terceira # "se o valor lido for menor ou igual a 3" vá para...
 bgt $t0, 3, quarta # "se o valor lido for maior que 3" vá para...
 j fim
 
 
-#primeira: ...
+primeira: 
+li $t1, 1 #coloca o valor "1" em $t1
+j fim
 
-#segunda: ...
+segunda: 
+li $t1, 2 #coloca o valor "2" em $t1
+j fim
 
 terceira: 
 mul $t1, $t0, $t0 #faz x^2 e guarda o resultado em $t1
@@ -42,3 +48,4 @@ syscall
 
 li $v0, 10 #encerra o programa
 syscall
+
