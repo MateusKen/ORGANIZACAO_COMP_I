@@ -1,9 +1,11 @@
+#NOME: RODRIGO MACHADO DE ASSIS OLIVEIRA DE LIMA - TIA: 32234678
+#NOME: MATEUS KENZO IOCHIMOTO - TIA: 32216289
 .data 
 c: .word 8, 13, -4, 4, 10
 elementos: .asciiz "\nElementos do vetor: \n"
-ma: .asciiz "\nMaior número do vetor: "
-me: .asciiz "\nMenor número do vetor: "
-med: .asciiz "\nMédia dos elementos do vetor: "	
+ma: .asciiz "\nMaior nÃºmero do vetor: "
+me: .asciiz "\nMenor nÃºmero do vetor: "
+med: .asciiz "\nMÃ©dia dos elementos do vetor: "	
 espaco: .asciiz " "
 virgula: .asciiz ","
 
