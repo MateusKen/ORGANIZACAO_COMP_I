@@ -1,38 +1,64 @@
 .data
 array: .space 40
 n: .asciiz "Digite um número: "
+msg: .asciiz "Ordem inversa: "
+espaco: .asciiz " "
 
 .text
-li $t0, 0 # contador para loop
-li $t4, 0 # contador para loop de print
-la $t1, array #endereço inicial do vetor
-la $t3, array # endereço inicial do vetor
-li $t2, 4
-mul $t2, $t2, 9
-addi $t1, $t1, $t2 # endereço do ultimo 
+li $t0, 0 #contador para loop de print
+li $t1, 10 #tamanho do vetor
 
-loop1:
-bge $t0, 10, print # depois de registrar os 10 inteiros para 
+loop:
+beq $t1,$zero,load #sai do loop quando todos os elementos do vetor foram usados
 
-li $v0, 4 # printa a mensagem de n
+#printa a mensagem de n
+li $v0, 4 
 la $a0, n
 syscall
 
-li $v0, 5 # pede o input
+#pede o input
+li $v0, 5
 syscall
 
-sw $v0, array($t1) 
-addi $t0, $t0, 1 # incrementa o contador
-addi $t1, $t1, -4 # faz o i--
-j loop
+move $s0, $v0 #guarda o input em $s0
+
+sw $s0, array($t0) #guarda o elemento no index atual
+addi $t0, $t0, 4 #soma 4 bytes para avancar o index e guardar o proximo elemento do vetor
+subi $t1, $t1, 1 #subtrai 1 do tamanho do vetor para controlar o loop
+j loop #loop
+
+load:
+#printa a mensagem de msg
+li $v0, 4 
+la $a0, msg
+syscall
+
+li $t1, 10 #reusa o $t1
+
+la $s0, array #$s0 = endereco do primeiro elemento do vetor
+j print
+
+
 
 print:
-bge $t4, 10, exit
-lw $t5, ($t1)
+beq $t1,$zero,exit #sai do loop quando todos os elementos do vetor foram usados
+lw $s1, 36($s0) #pega o elemento do array na ultima posicao (offset 36 = 4 * 9) e coloca no $s1
 
+#imprime o elemento
 li $v0, 1
-move $a0, $t5
+move $a0, $s1
 syscall
 
-addi $t4, $t4, 4
-j print
+#imprime um espaco
+li $v0, 4
+la $a0, espaco
+syscall
+
+subi $s0, $s0, 4 #subtrai 4 bytes para pegar o proximo elemento anterior
+subi $t1, $t1, 1 #subtrai 1 do tamanho do vetor para controlar o loop
+j print #loop
+
+#fim do programa
+exit:
+li $v0, 10
+syscall
