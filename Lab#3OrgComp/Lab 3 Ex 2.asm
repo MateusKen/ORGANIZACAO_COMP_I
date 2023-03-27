@@ -1,3 +1,5 @@
+#NOME: RODRIGO MACHADO DE ASSIS OLIVEIRA DE LIMA - TIA: 32234678
+#NOME: MATEUS KENZO IOCHIMOTO - TIA: 32216289
 .data
 array: .space 40
 n: .asciiz "Digite um número: "
