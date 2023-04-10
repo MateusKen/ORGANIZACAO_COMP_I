@@ -1,4 +1,3 @@
-# Exemplo de Lista Ligada em MIPS
 .data
 qtd: .asciiz "Quantos nodes para essa lista? "
 valor: .asciiz "Qual o valor do node? "
@@ -6,6 +5,7 @@ head: .asciiz "\nhead -> "
 no1: .asciiz "\nNode 1(key) -> "
 no1Next: .asciiz "\nNode 1(next) -> "
 no2: .asciiz "\nNode 2(key) -> "
+espaco: .asciiz " "
 
 .text
 .globl main
@@ -21,23 +21,21 @@ syscall
 li $v0, 5
 syscall
 
-move $t3, $v0 # contador da quantidade de nós
-move $t4, $v0 # copia do contador da quantidade de nós
+move $t3, $v0 # contador da quantidade de nÃ³s
+move $t4, $v0 # copia do contador da quantidade de nÃ³s
 
-# Inicialização do ponteiro para o primeiro nó da lista
+# InicializaÃ§Ã£o do ponteiro para o primeiro nÃ³ da lista
 li $t0, 0
-la $s0, ($t0) # endereço da head
-
-
+la $s0, ($t0) # endereÃ§o da head
 
 loop:
-beq $t3, $zero, print #"se o contador chegar a 0... vá para..."
+beq $t3, $zero, print #"se o contador chegar a 0... vÃ¡ para..."
 
-# Alocando espaço na heap para o primeiro nó da lista
+# Alocando espaÃ§o na heap para o primeiro nÃ³ da lista
 li $a0, 8          # 8 bytes para armazenar um ponteiro e um valor inteiro
-li $v0, 9          # Código do serviço do sistema para alocação na heap
+li $v0, 9          # CÃ³digo do serviÃ§o do sistema para alocaÃ§Ã£o na heap
 syscall
-move $s1, $v0      # Armazenando o endereço do nó alocado na heap em $s1
+move $s1, $v0      # Armazenando o endereÃ§o do nÃ³ alocado na heap em $s1
    
 #printa a mensagem de valor
 li $v0, 4 
@@ -50,20 +48,14 @@ syscall
 
 move $t1, $v0 # armazena o valor lido em $t1 
    
-sw $t1, ($s1)      # Armazenando o valor no endereço do nó alocado
-sw $t0, 4($s1)     # O ponteiro próximo do nó é nulo
+sw $t1, ($s1)      # Armazenando o valor no endereÃ§o do nÃ³ alocado
+sw $t0, 4($s1)     # O ponteiro prÃ³ximo do nÃ³ Ã© nulo
 
-#configurando o ponteiro para o primeiro nó da lista para apontar para o nó alocado
+#configurando o ponteiro para o primeiro nÃ³ da lista para apontar para o nÃ³ alocado
+sw $s1, 4($s1) #node anterior aponta para o prÃ³ximo node da lista
+la $s0, 4($s1) #incrementa o node
 
-la $s0, ($s1) #guarda o endereço no node anterior
-
-beq $t3, $t4, armazena #apenas no primeiro loop, guarda o head
-
-la $s0, 4($s1)
-
-
-
-
+beq $t3, $t4, armazena
 volta:
 
 subi $t3, $t3, 1 #subtrai 1 do tamanho do vetor para controlar o loop
@@ -73,32 +65,29 @@ j loop
 
 armazena:
 
-la $s2, ($s0)#armazena o endereco inicial do head em s2 para uso mais tarde
+la $s2, ($s1)#armazena o endereco inicial do head em s0 para uso mais tarde
 
 j volta
 
 
 print:
+beq $t4, $zero, exit #"se o contador chegar a 0... vÃ¡ para..."
+
+# Imprimindo o endereï¿½o armazenado em head
 li $v0, 1
-move $a0, $s2
-syscall
-
-lw $s2, 4($s2)
-
-printloop:
-beq $t4, $zero, exit #"se o contador chegar a 0... vá para..."
-
-# Imprimindo o valor armazenado no nó atual
 lw $t5, ($s2)
-li $v0, 1
 move $a0, $t5
 syscall
 
-# Atualizando o endereço armazenado em $s2 para apontar para o próximo nó da lista
-lw $s2, 4($s2)
+la $s2, 8($s2) # move s2 to the next node
 
 subi $t4, $t4, 1 #subtrai 1 do tamanho do vetor para controlar o loop
-j printloop
+
+li $v0, 4 
+la $a0, espaco
+syscall
+
+j print
 
 #fim do programa
 exit:
