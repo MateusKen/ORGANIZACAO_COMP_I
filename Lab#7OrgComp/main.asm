@@ -1,6 +1,6 @@
 .data
-	msg_add1: .asciiz "Digite o valor do primeiro numero da adição: "
-	msg_add2: .asciiz "Digite o valor do segundo numero da adição: "
+	msg_add1: .asciiz "Digite o valor do primeiro número da adição: "
+	msg_add2: .asciiz "Digite o valor do segundo número da adição: "
 	msg_result_add: .asciiz "O resultado da adição: "
 	
 	msg_sub1: .asciiz "Digite o valor do primeiro fator da subtração: "
