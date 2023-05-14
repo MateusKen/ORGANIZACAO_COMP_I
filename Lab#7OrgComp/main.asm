@@ -24,16 +24,16 @@ li $v0, 4
 la $a0, msg_add1
 syscall
 
-li $v0, 6  #valor lido Ã© guardado em $f0
+li $v0, 6  #valor lido é guardado em $f0
 syscall
 
-movf.s $f1, $f0 #move o conteÃºdo de $f0 para $f1
+movf.s $f1, $f0 #move o conteudo de $f0 para $f1
 
 li $v0, 4
 la $a0, msg_add2
 syscall
 
-li $v0, 6  #valor lido Ã© guardado em $f0
+li $v0, 6  #valor lido é guardado em $f0
 syscall
 
 add.s $f12, $f1, $f0
@@ -52,16 +52,16 @@ li $v0, 4
 la $a0, msg_sub1
 syscall
 
-li $v0, 6  #valor lido Ã© guardado em $f0
+li $v0, 6  #valor lido é guardado em $f0
 syscall
 
-movf.s $f1, $f0 #move o conteÃºdo de $f0 para $f1
+movf.s $f1, $f0 #move o conteudo de $f0 para $f1
 
 li $v0, 4
 la $a0, msg_sub1
 syscall
 
-li $v0, 6  #valor lido Ã© guardado em $f0
+li $v0, 6  #valor lido é guardado em $f0
 syscall
 
 sub.s $f12, $f1, $f0
@@ -80,16 +80,16 @@ li $v0, 4
 la $a0, msg_fator1
 syscall
 
-li $v0, 6  #valor lido Ã© guardado em $f0
+li $v0, 6  #valor lido é guardado em $f0
 syscall
 
-movf.s $f1, $f0 #move o conteÃºdo de $f0 para $f1
+movf.s $f1, $f0 #move o conteudo de $f0 para $f1
 
 li $v0, 4
 la $a0, msg_fator2
 syscall
 
-li $v0, 6  #valor lido Ã© guardado em $f0
+li $v0, 6  #valor lido é guardado em $f0
 syscall
 
 mul.s $f12, $f1, $f0
@@ -108,16 +108,16 @@ li $v0, 4
 la $a0, msg_dividendo
 syscall
 
-li $v0, 6  #valor lido Ã© guardado em $f0
+li $v0, 6  #valor lido é guardado em $f0
 syscall
 
-movf.s $f1, $f0 #move o conteÃºdo de $f0 para $f1 
+movf.s $f1, $f0 #move o conteudo de $f0 para $f1 
 
 li $v0, 4
 la $a0, msg_divisor
 syscall
 
-li $v0, 6  #valor lido Ã© guardado em $f0
+li $v0, 6  #valor lido é guardado em $f0
 syscall
 
 div.s $f12, $f1, $f0
