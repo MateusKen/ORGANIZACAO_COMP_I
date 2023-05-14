@@ -14,7 +14,11 @@
 	msg_dividendo: .asciiz "Digite o valor do dividendo: "
 	msg_divisor: .asciiz "Digite o valor do divisor: "
 	msg_result_divisao: .asciiz "O resultado da divisão é: "
+	
+	msg_menu: .asciiz "Menu de opções\n1- Soma\n2- Subtração\n3- Multiplicação\n4- Divisão\n5- SAIR\nDigite a opção: "
 .text
+j main
+
 add:
 li $v0, 4
 la $a0, msg_add1
@@ -117,4 +121,9 @@ la $a0, msg_result_divisao
 syscall
 
 li $v0, 2
+syscall
+
+main:
+li $v0, 4
+la $a0, msg_menu
 syscall
