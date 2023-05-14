@@ -5,7 +5,7 @@
 	
 	msg_sub1: .asciiz "Digite o valor do primeiro fator da subtraçãoo: "
 	msg_sub2: .asciiz "Digite o valor do segundo fator da subtração: "
-	msg_result_sub: .asciiz "O resultado da subtraÃ§Ã£o: "
+	msg_result_sub: .asciiz "O resultado da subtração: "
 	
 	msg_fator1: .asciiz "Digite o valor do primeiro fator da multiplicação: "
 	msg_fator2: .asciiz "Digite o valor do segundo fator da multiplicação: "
@@ -15,7 +15,7 @@
 	msg_divisor: .asciiz "Digite o valor do divisor: "
 	msg_result_divisao: .asciiz "O resultado da divisão: "
 	
-	msg_menu: .asciiz "\nMenu de opções\n1- Soma\n2- Subtração\n3- Multiplicação\n4- Divisão\n5- SAIR\nDigite a opÃ§Ã£o: "
+	msg_menu: .asciiz "\nMenu de opções\n1- Soma\n2- Subtração\n3- Multiplicação\n4- Divisão\n5- SAIR\nDigite a opção: "
 .text
 j main
 
