@@ -3,7 +3,7 @@
 	msg_add2: .asciiz "Digite o valor do segundo numero da adição: "
 	msg_result_add: .asciiz "O resultado da adição: "
 	
-	msg_sub1: .asciiz "Digite o valor do primeiro fator da subtraçãoo: "
+	msg_sub1: .asciiz "Digite o valor do primeiro fator da subtração: "
 	msg_sub2: .asciiz "Digite o valor do segundo fator da subtração: "
 	msg_result_sub: .asciiz "O resultado da subtração: "
 	
